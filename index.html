@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Malaysia Air Pollution Index Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Load Vega, Vega-Lite, Vega-Embed -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { text-align: center; }
+    #vis { width: 100%; max-width: 1000px; margin: 0 auto; }
+  </style>
+</head>
+<body>
+  <h1>Malaysia Air Pollution Index (API)</h1>
+  <div id="vis"></div>
+
+  <script>
+    const spec = {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "width": 900,
+      "height": 600,
+      "projection": { "type": "mercator", "center": [110, 4], "scale": 2000 },
+      "layer": [
+        {
+          "data": { "graticule": { "step": [2, 2] } },
+          "mark": {
+            "type": "geoshape",
+            "stroke": "#cccccc",
+            "strokeWidth": 0.4,
+            "strokeDash": [2, 2],
+            "fill": null
+          }
+        },
+        {
+          "mark": { "type": "geoshape", "fill": "#cceeff" }
+        },
+        {
+          "data": {
+            "url": "https://gist.githubusercontent.com/heiswayi/81a169ab39dcf749c31a/raw/malaysia.geojson",
+            "format": { "type": "geojson" }
+          },
+          "mark": {
+            "type": "geoshape",
+            "fill": "transparent",
+            "stroke": "#00796b",
+            "strokeWidth": 1
+          }
+        },
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/william22288/air-pollution-index/refs/heads/main/APIMS-transformed(cleaned%20kaggle%20dataset).csv"
+          },
+          "mark": { "type": "circle", "opacity": 0.8, "stroke": "#333", "strokeWidth": 0.5 },
+          "encoding": {
+            "longitude": { "field": "Longitude", "type": "quantitative" },
+            "latitude": { "field": "Latitude", "type": "quantitative" },
+            "size": { "field": "2022-05-07 10:00", "type": "quantitative", "title": "API" },
+            "color": {
+              "field": "2022-05-07 10:00",
+              "type": "quantitative",
+              "title": "Air Pollution Index",
+              "scale": {
+                "type": "threshold",
+                "domain": [20, 40, 60, 80, 100],
+                "range": ["#fee5d9", "#fcbba1", "#fc9272", "#fb6a4a", "#de2d26", "#a50f15"]
+              }
+            },
+            "tooltip": [
+              { "field": "Location", "type": "nominal" },
+              { "field": "2022-05-07 10:00", "type": "quantitative", "title": "API" }
+            ]
+          }
+        }
+      ]
+    };
+
+    vegaEmbed("#vis", spec, { actions: false }).catch(console.error);
+  </script>
+</body>
+</html>
