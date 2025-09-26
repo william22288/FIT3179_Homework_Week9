@@ -2,7 +2,10 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Air Pollution Index (API) in Malaysia on 2022-05-07",
-    "fontSize": 24},
+    "fontSize": 24,
+    "fontWeight": "bold",
+    "color": "#000",
+    "font": "Merriweather, serif"},
   "width": 800,
   "height": 500,
   "projection": {
