@@ -32,7 +32,7 @@
     
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/william22288/air-pollution-index/refs/heads/main/APIMS-transformed(cleaned%20kaggle%20dataset).csv"
+        "url": "https://raw.githubusercontent.com/william22288/FIT3179_Homework_Week9/refs/heads/main/data/APIMS-transformed(cleaned%20kaggle%20dataset).csv"
       },
       "transform": [
         {
