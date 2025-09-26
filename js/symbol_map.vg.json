@@ -1,6 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Air Pollution Index (API) in Malaysia on 2022-05-07",
+  "title": {
+    "text": "Air Pollution Index (API) in Malaysia on 2022-05-07",
+    "fontSize": 24},
   "width": 800,
   "height": 500,
   "projection": {
@@ -119,7 +121,7 @@
         "size": {
           "field": "Population",
           "type": "quantitative",
-          "title": "Population",
+          "title": "Location Population",
           "scale": {
             "domain": [100000, 800000],
             "range": [50, 2000]
