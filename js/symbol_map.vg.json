@@ -26,7 +26,7 @@
     },
     {
       "data": {
-        "url": "https://gist.githubusercontent.com/heiswayi/81a169ab39dcf749c31a/raw/malaysia.geojson"
+        "url": "https://raw.githubusercontent.com/william22288/FIT3179_Homework_Week9/refs/heads/main/js/malaysia.geojson"
       },
       "mark": {
         "type": "geoshape",
